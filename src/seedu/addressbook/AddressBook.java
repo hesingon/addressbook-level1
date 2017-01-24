@@ -1048,6 +1048,11 @@ public class AddressBook {
 		final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
 		final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
 
+		return locatePhoneString(encoded, indexOfPhonePrefix, indexOfEmailPrefix);
+	}
+
+	private static String locatePhoneString(String encoded, final int indexOfPhonePrefix,
+			final int indexOfEmailPrefix) {
 		// phone is last arg, target is from prefix to end of string
 		if (indexOfPhonePrefix > indexOfEmailPrefix) {
 			return removePrefix(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
@@ -1071,6 +1076,11 @@ public class AddressBook {
 		final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
 		final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
 
+		return locateEmailString(encoded, indexOfPhonePrefix, indexOfEmailPrefix);
+	}
+
+	private static String locateEmailString(String encoded, final int indexOfPhonePrefix,
+			final int indexOfEmailPrefix) {
 		// email is last arg, target is from prefix to end of string
 		if (indexOfEmailPrefix > indexOfPhonePrefix) {
 			return removePrefix(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
